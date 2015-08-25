@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html ng-app='restaurantList'>
+  <head>
+    <title>Restaurants</title>
+    <link rel='stylesheet' type='text/css' href='http://cdn.foundation5.zurb.com/foundation.css'>
+		<script src='//code.jquery.com/jquery-1.11.3.min.js'></script>
+		<script src='http://cdn.foundation5.zurb.com/foundation.js'></script>
+		<link rel='stylesheet' type='text/css' href="<%= url('css/main.css') %>">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src='lib/angular.js'></script>
+    <script src='./app.js'></script>
+    <script src='js/RestaurantsController.js'></script>
+  </head>
+  <body>
+    <div class="container" ng-controller='RestaurantsCtrl'>
+      <div class="row">
+        <div class="col-md-12">
+          <ul>
+            <li ng-repeat='item in restaurants'>
+              <p>Name: {{item.name}}</p>
+              <p>Type: {{item.type}}</p>
+              <p>Location: {{item.location}}</p>
+              <p>Price: {{item.price}}</p>
+
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+       <h4>New Restaurant</h4>
+       <form ng-submit="addRestaurant()" class="form-inline" role="form">
+         <div class="form-group">
+           <input type="text" ng-model="restaurantName" class="form-control" placeholder="Enter name">
+           <input type="text" ng-model="restaurantType" class="form-control" placeholder="Enter type">
+           <input type="text" ng-model="restaurantLocation" class="form-control" placeholder="Enter location">
+           <input type="text" ng-model="restaurantPrice" class="form-control" placeholder="Enter price">
+         </div>
+         <button type="submit" class="btn btn-default">Submit</button>
+       </form>
+     </div>
+      </div>
+
+    </div>
+
+  </body>
+</html>
